@@ -10,9 +10,9 @@ document.addEventListener("DOMContentLoaded", function() {
                             <a href="index.html">LC Labs Artificial Intelligence Planning Framework</a>
                             <ul class="submenu">
                                 <li class="nav-item" data-page="about.html"><a href="about.html">About</a></li>
-                                <li class="nav-item" data-page="404.html"><a href="404.html">Understand</a></li>
-                                <li class="nav-item" data-page="404.html"><a href="404.html">Experiment</a></li>
-                                <li class="nav-item" data-page="404.html"><a href="404.html">Implement</a></li>
+                                <li class="nav-item" data-page="understand.html"><a href="understand.html">Understand</a></li>
+                                <li class="nav-item" data-page="experiment.html"><a href="experiment.html">Experiment</a></li>
+                                <li class="nav-item" data-page="implement.html"><a href="implement.html">Implement</a></li>
                                 <li class="nav-item" data-page="form.html"><a href="form.html">Worksheets</a></li>
                                 <li class="nav-item" data-page="glossory.html"><a href="glossory.html">Glossory</a></li>
                             </ul>
