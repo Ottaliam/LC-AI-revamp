@@ -339,8 +339,8 @@
         legend {
             display: block;
             width: 100%;
-            padding: 0;
-            margin-bottom: 20px;
+            padding: 10px 0 0 0;
+            /*margin-bottom: 20px;*/
             font-size: 21px;
             line-height: inherit;
             color: #333;
@@ -352,7 +352,8 @@
             display: inline-block;
             max-width: 100%;
             margin-bottom: 5px;
-            font-weight: 700
+            /*font-weight: 700*/
+            font-family: 'Open Sans', Arial, Helvetica, sans-serif;;
         }
 
         input[type=search] {
@@ -952,18 +953,173 @@
         <div class="managed-content-row">
             <div class="managed-content-content">
                 <main class="main-content">
+                    <h1>AI Use Case Risk Assessment</h1>
+                    <p>This questionnaire is meant to assist staff in assessing the risk profile of an AI use case. The risk level will inform planning for the level of the risk mitigation efforts, estimated timeline for safety, quality and performance verification, and resources required.  </p>
                     <form>
+                        <h2>What and Why?</h2>
                         <fieldset>
-                            <legend>What and Why?</legend>
-                            <div class="form-group">
-                                <label for="q1">1.	Describe the AI or ML use case being proposed, include information about what function will be enhanced or automated through AI, what improvements are expected, or what specific capability would be added?</label>
-                                <textarea class="form-control" id="q1" rows="3"></textarea>
-                            </div>
+                            <legend>1.	Describe the AI or ML use case being proposed, include information about what function will be enhanced or automated through AI, what improvements are expected, or what specific capability would be added?</legend>
+                            <textarea class="form-control" id="q1" rows="3"></textarea>
                         </fieldset>
                         <fieldset>
+                            <legend>2.	What is motivating your team to introduce AI or ML into this process? (Check all that apply)</legend>
+                            <label><input type="checkbox" name="q2"> Directive from leadership</label> <br>
+                            <label><input type="checkbox" name="q2"> To achieve a strategic or operational goal currently out of reach</label> <br>
+                            <label><input type="checkbox" name="q2"> High volume of existing backlog of work or cases</label> <br>
+                            <label><input type="checkbox" name="q2"> Improve overall quality of output or service</label> <br>
+                            <label><input type="checkbox" name="q2"> Lower time of completion for an existing process (time saved)</label> <br>
+                            <label><input type="checkbox" name="q2"> The enhancement could perform tasks that humans could not accomplish in a reasonable period of time (scale)</label> <br>
+                            <label><input type="checkbox" name="q2"> Use of innovative approaches, want to try something new.</label> <br>
+                            <label><input type="checkbox" name="q2"> Opportunity to collaborate with internal or external partner.</label> <br>
+                            <label for="q2-other"><input type="checkbox" name="q2"> Other (please specify)</label> <br>
+                            <textarea class="form-control" id="q2-other" rows="3"></textarea>
+                        </fieldset>
+                        <fieldset>
+                            <legend>3.	Is the proposed enhancement in an area with an existing high degree of oversight, regulation, or litigation?</legend>
+                            <label><input type="radio" name="q3" value="A"> A: Yes</label> <br>
+                            <label><input type="radio" name="q3" value="B"> B: Could be</label> <br>
+                            <label><input type="radio" name="q3" value="C"> C: I don't know</label> <br>
+                            <label><input type="radio" name="q3" value="D"> D: Probably not</label> <br>
+                            <label><input type="radio" name="q3" value="E"> E: Know</label>
+                        </fieldset>
+                        <fieldset>
+                            <legend>4.	How will the proposed AI capability or service ultimately function?</legend>
+                            <label><input type="radio" name="q4" value="A"> A. Fully automatically with no human review or oversight</label> <br>
+                            <label><input type="radio" name="q4" value="B"> B: Partially automated with limited review of all outputs</label> <br>
+                            <label><input type="radio" name="q4" value="C"> C: I don’t know</label> <br>
+                            <label><input type="radio" name="q4" value="D"> D: Partially automated with regular review of a sample of outputs</label> <br>
+                            <label><input type="radio" name="q4" value="E"> E: Partially automated with review of all outputs </label> <br>
+                            <label for="q4-other"><input type="radio" name="q4" value="O"> Other (please specify)</label>
+                            <textarea class="form-control" id="q4-other" rows="3"></textarea>
+                        </fieldset>
+                        <fieldset>
+                            <legend>5.	Human and AI tools both introduce error into workflows. What is the tolerance for error in this proposed use case?</legend>
+                            <label><input type="radio" name="q5" value="A"> A: No tolerance</label> <br>
+                            <label><input type="radio" name="q5" value="B"> B: Low tolerance for error</label> <br>
+                            <label><input type="radio" name="q5" value="C"> C: I don’t know</label> <br>
+                            <label><input type="radio" name="q5" value="D"> D: Some tolerance</label> <br>
+                            <label><input type="radio" name="q5" value="E"> E: High tolerance</label>
+                        </fieldset>
+                        <fieldset>
+                            <legend>6.	Is the capability operational in other systems internally or externally?</legend>
+                            <label><input type="radio" name="q6" value="A"> A: No</label> <br>
+                            <label><input type="radio" name="q6" value="B"> B: Not that I know of</label> <br>
+                            <label><input type="radio" name="q6" value="C"> C: I don’t know</label> <br>
+                            <label><input type="radio" name="q6" value="D"> D: Yes, at a different organization</label> <br>
+                            <label><input type="radio" name="q6" value="E"> E: Yes, at my organization</label> <br>
+                            <label for="q6-other"><input type="radio" name="q6" value="O"> F: If yes, where and what is it?</label>
+                            <textarea class="form-control" id="q6-other" rows="3"></textarea>
+                        </fieldset>
+                        <fieldset>
+                            <legend>7.	What is the status of planning for the use case?</legend>
+                            <label><input type="radio" name="q7" value="A"> A: Would be nice to have</label> <br>
+                            <label><input type="radio" name="q7" value="B"> B: Is a strategic investment or improvement</label> <br>
+                            <label><input type="radio" name="q7" value="C"> C: I don't know</label> <br>
+                            <label><input type="radio" name="q7" value="D"> D: Affects a critical function</label> <br>
+                            <label><input type="radio" name="q7" value="E"> E: Affects a critical function that only this organization performs</label>
+                        </fieldset>
+                        <fieldset>
+                            <legend>8.	What would the consequence of not deploying the case or enhancement be?</legend>
+                            <label><input type="radio" name="q8" value="A"> A: Use case or enhancement could not be delivered at all</label> <br>
+                            <label><input type="radio" name="q8" value="B"> B: Use case or enhancement would not be timely and/or costs would be too high</label> <br>
+                            <label><input type="radio" name="q8" value="C"> C: I don’t know</label> <br>
+                            <label><input type="radio" name="q8" value="D"> D: Use case or enhancement quality would not be as high</label> <br>
+                            <label><input type="radio" name="q8" value="E"> E: Use case or enhancement would not improve or meet expectations</label> <br>
+                            <label for="q8-other"><input type="radio" name="q8" value="O"> F: Other, please specify</label>
+                            <textarea class="form-control" id="q8-other" rows="3"></textarea>
+                        </fieldset>
+                        <fieldset>
+                            <legend>9.	How do you currently assure high quality outcomes or do quality review for this capability (or related task)?</legend>
+                            <label><input type="radio" name="q9" value="A"> A: None, outcomes from this workflow are not reviewed </label> <br>
+                            <label><input type="radio" name="q9" value="B"> B: This is a new capability, so no review process exists yet</label> <br>
+                            <label><input type="radio" name="q9" value="C"> C: I don’t know</label> <br>
+                            <label><input type="radio" name="q9" value="D"> D: We have expert staff review </label> <br>
+                            <label><input type="radio" name="q9" value="E"> E: We have expert staff review and there are written policies and/or standards for the capability</label>
+                            <label for="q9-other"><input type="radio" name="q9" value="O"> F: Other, describe:</label>
+                            <textarea class="form-control" id="q9-other" rows="3"></textarea>
+                        </fieldset>
+                        <fieldset>
+                            <legend>10.	What is the cost or impact of mistakes or errors in this use case?</legend>
+                            <label><input type="radio" name="q10" value="A"> A: High – mistakes would result in catastrophic failures of critical workflows</label> <br>
+                            <label><input type="radio" name="q10" value="B"> B: Moderately high – mistakes would be very costly to resolve and fix</label> <br>
+                            <label><input type="radio" name="q10" value="C"> C: I don't know</label> <br>
+                            <label><input type="radio" name="q10" value="D"> D: Moderate – mistakes would cause some disruption</label> <br>
+                            <label><input type="radio" name="q10" value="E"> E: Low – mistakes would have little impact</label>
+                        </fieldset>
 
-                        </fieldset>
+                        <br><br><br><br><br><br>
+                        <h2>Who</h2>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+
+                        <br><br><br><br><br><br>
+                        <h2>Data</h2>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
                     </form>
+                    <br><br><br><br><br><br>
+                    <h2>Assessment</h2>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Section</th>
+                                <th>A</th>
+                                <th>B</th>
+                                <th>C</th>
+                                <th>D</th>
+                                <th>E</th>
+                                <th>Subtotals</th>
+                            </tr>
+                            <tr>
+                                <td>What &amp; Why</td>
+                                <td id="ww-A"> </td>
+                                <td id="ww-B"> </td>
+                                <td id="ww-C"> </td>
+                                <td id="ww-D"> </td>
+                                <td id="ww-E"> </td>
+                                <td id="ww-total"> </td>
+                            </tr>
+                            <tr>
+                                <td>Who</td>
+                                <td> </td>
+                                <td> </td>
+                                <td> </td>
+                                <td> </td>
+                                <td> </td>
+                                <td> </td>
+                            </tr>
+                            <tr>
+                                <td>Data</td>
+                                <td> </td>
+                                <td> </td>
+                                <td> </td>
+                                <td> </td>
+                                <td> </td>
+                                <td> </td>
+                            </tr>
+                            <tr>
+                                <td style="text-align: right">Subtotals</td>
+                                <td id="A-total"> </td>
+                                <td id="B-total"> </td>
+                                <td id="C-total"> </td>
+                                <td id="D-total"> </td>
+                                <td id="E-total"> </td>
+                                <td> </td>
+                            </tr>
+                        </thead>
+                    </table>
+                    <h3>Mostly As - Very high-risk use case.</h3>
+                    <p>Plan for significant research, development and testing before implementation. Performance must meet the current state of the art for AI safety, trustworthiness, and quality. Quality benchmarks and controls need to be developed and thoroughly tested for even and consistent performance. </p>
+                    <h3>A lot of Bs - High risk use case.</h3>
+                    <p>Experiment, test and pilot these solutions prior to implementation. Baseline quality metrics need to be established. </p>
+                    <h3>Primarily Cs.</h3>
+                    <p>More information and detail are needed prior to moving forward.</p>
+                    <h3>A lot of Fs - Moderate risk use case.</h3>
+                    <p>If you want to buy or acquire AI services for this risk level, verify published performance metrics are achievable with your data and use case. </p>
+                    <h3>Mostly Es - Low risk use case.</h3>
+                    <p>It is likely appropriate to research and purchase tools or services available in the marketplace that meet quality standards.</p>
+                    <h3>A mix? </h3>
+                    <p>Where do you have the most As and Bs? That will tell you where to focus risk mitigation efforts. Your Ds and Es will point to where the conditions for risk are lowering. </p>
+
+                    <p>These scores are not final nor are they exact. They are meant to inform a first level assessment of risk, feasibility, and prioritization for proposed AI use cases. The discussion and reflection this questionnaire facilitate are more significant than the score. There are a range of risks and costs involved in the implementation of AI. A higher risk level generally signifies higher costs and resources required for implementation .</p>
                 </main>
             </div>
             <div class="managed-content-navigation">
@@ -1000,6 +1156,31 @@
             </div>
         </div>
     </div>
+    <script>
+        const countSelections = () => {
+          const counts = {'A': 0, 'B': 0, 'C': 0, 'D': 0, 'E': 0};
+          const questions = ['q3', 'q4', 'q5', 'q6', 'q7', 'q8', 'q9', 'q10'];
+
+          questions.forEach((question) => {
+            const selected = document.querySelector(`input[name="${question}"]:checked`);
+            if (selected && counts.hasOwnProperty(selected.value)) {
+              counts[selected.value]++;
+            }
+          });
+
+          let sum = 0;
+          Object.entries(counts).forEach(([key, value]) => {
+            document.querySelector(`#ww-${key}`).textContent = value;
+            document.querySelector(`#${key}-total`).textContent = value;
+            sum += value;
+          });
+          document.querySelector(`#ww-total`).textContent = sum;
+        }
+
+        document.querySelector("form").addEventListener("change", () => {
+          countSelections();
+        })
+    </script>
 </body>
 
 </html>
