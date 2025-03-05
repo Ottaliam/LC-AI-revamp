@@ -237,3 +237,7 @@ table img {
 table + p {
     margin-top: -0.8rem;
 }
+
+span.tooltip {
+    display: inline;
+}
