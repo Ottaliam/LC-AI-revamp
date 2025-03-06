@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", function() {
                                 <li class="nav-item" data-page="experiment.html"><a href="experiment.html">Experiment</a></li>
                                 <li class="nav-item" data-page="implement.html"><a href="implement.html">Implement</a></li>
                                 <li class="nav-item" data-page="form.html"><a href="form.html">Worksheets</a></li>
-                                <li class="nav-item" data-page="glossory.html"><a href="glossory.html">Glossory</a></li>
+                                <li class="nav-item" data-page="glossary.html"><a href="glossary.html">Glossary</a></li>
                                 <li class="nav-item" data-page="further_accessment.html"><a href="further_accessment.html">Further Risk Accessment</a></li>
                             </ul>
                         </li>
