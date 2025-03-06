@@ -1,0 +1,531 @@
+<!doctype html>
+<html lang="en-us">
+
+<head>
+    <meta charset="utf-8">
+    <title>LC Labs AI Planning Framework</title>
+    <meta name="description"
+        content="LC Labs has been developing a planning framework to support the responsible exploration and potential adoption of AI at the Library of Congress.">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/base.css">
+    <style>
+        .header-labs {
+            border-top: 4px solid #F05129;
+            background-color: transparent;
+            background-color: #fff;
+        }
+
+        .header-labs .header-labs-container {
+            max-width: 85.71428571rem;
+            width: 100%;
+            margin: 0 auto;
+            padding: 0 2rem;
+            background-color: #fff;
+            box-sizing: border-box;
+        }
+
+        @media (max-width: 768px) {
+            .header-labs .header-labs-container {
+                padding-left: 1rem;
+                padding-right: 1rem;
+            }
+        }
+
+        .header-labs .header-labs-row {
+            display: -webkit-box;
+            /* OLD - iOS 6-, Safari 3.1-6, BB7 */
+            display: -ms-flexbox;
+            /* TWEENER - IE 10 */
+            display: -webkit-flex;
+            /* NEW - Safari 6.1+. iOS 7.1+, BB10 */
+            display: -moz-box;
+            display: flex;
+            /* NEW, Spec - Firefox, Chrome, Opera */
+            -webkit-flex-flow: row wrap;
+            flex-flow: row wrap;
+            -webkit-flex-align: flex-start;
+            -webkit-align-items: flex-start;
+            -ms-flex-align: flex-start;
+            align-items: flex-start;
+            margin: 0 -1rem;
+            align-items: center;
+        }
+
+        .header-labs .header-labs-logo {
+            -webkit-box-flex: 1;
+            /* OLD - iOS 6-, Safari 3.1-6 */
+            -webkit-flex: 1;
+            /* Safari 6.1+. iOS 7.1+, BB10 */
+            -ms-flex: 1;
+            /* IE 10 */
+            -moz-box-flex: 1;
+            flex: 1;
+            /* NEW, Spec - Firefox, Chrome, Opera */
+            min-width: 0;
+            /* firefox fix */
+            margin: 0 1rem;
+            box-sizing: border-box;
+            padding-top: 15px;
+            padding-bottom: 15px;
+            white-space: nowrap;
+            display: flex;
+            align-items: center;
+        }
+
+        .header-labs .header-labs-logo>.header-labs-logo-loc>img,
+        .header-labs .header-labs-logo>.header-labs-logo-labs>img {
+            height: 100%;
+            margin: 0;
+            display: block;
+        }
+
+        .header-labs .header-labs-logo>.header-labs-logo-loc {
+            display: inline-block;
+            vertical-align: top;
+            border-right: 1px solid #808080;
+            padding-right: 10px;
+            margin-right: 10px;
+            height: 50px;
+        }
+
+        @media (min-width: 481px) {
+            .header-labs .header-labs-logo>.header-labs-logo-loc {
+                padding-right: 18px;
+                margin-right: 18px;
+                height: 80px;
+            }
+        }
+
+        @media (min-width: 993px) {
+            .header-labs .header-labs-logo>.header-labs-logo-loc {
+                height: 97px;
+            }
+        }
+
+        .header-labs .header-labs-logo>.header-labs-logo-loc>span {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            margin: -1px;
+            padding: 0;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            border: 0;
+        }
+
+        .header-labs .header-labs-logo>.header-labs-logo-labs {
+            display: inline-block;
+            height: 16px;
+        }
+
+        @media (min-width: 481px) {
+            .header-labs .header-labs-logo>.header-labs-logo-labs {
+                height: 20px;
+            }
+        }
+
+        @media (min-width: 993px) {
+            .header-labs .header-labs-logo>.header-labs-logo-labs {
+                height: 25px;
+            }
+        }
+
+        .header-labs .header-labs-menu .header-menu-button {
+            display: none;
+            color: #000;
+            padding: 0 1rem;
+            border: 0;
+            background: none;
+            font-size: 2rem;
+            height: 50px;
+            line-height: 50px;
+        }
+
+        .header-labs .header-labs-menu .header-menu-button:focus {
+            outline: 1px dotted #BFBFBF;
+        }
+
+        .header-labs .header-labs-menu .header-menu-button>span {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            margin: -1px;
+            padding: 0;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            border: 0;
+        }
+
+        @media (max-width: 992px) {
+            .header-labs .header-labs-menu .header-menu-button {
+                display: inline-block;
+            }
+        }
+
+        .header-labs .header-labs-menu .header-menu-button[aria-expanded="true"] {
+            background-color: #F6F6F6;
+            color: #F05129;
+        }
+
+        .header-labs .header-labs-menu .header-menu-button[aria-expanded="true"] i:before {
+            content: "\f00d";
+        }
+
+        .header-labs .page-menu-labs-clone {
+            display: none;
+            position: absolute;
+            z-index: 1;
+            background-color: #F6F6F6;
+            padding: 1rem 3rem 1rem 1rem;
+            right: 0;
+        }
+
+        .header-labs .page-menu-labs-clone>nav>h2 {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            margin: -1px;
+            padding: 0;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            border: 0;
+        }
+
+        .header-labs .page-menu-labs-clone>nav>ul {
+            padding-left: 0;
+            list-style: none;
+            margin-bottom: 0;
+        }
+
+        ul .header-labs .page-menu-labs-clone>nav>ul {
+            padding-left: 40px;
+        }
+
+        .header-labs .page-menu-labs-clone>nav>ul>li>a {
+            padding: 5px 0;
+            display: block;
+        }
+
+        .header-labs .page-menu-labs-clone>nav>ul>li>ul {
+            display: none;
+        }
+
+        .header-labs .page-menu-labs>nav>h2 {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            margin: -1px;
+            padding: 0;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            border: 0;
+        }
+
+        .header-labs .page-menu-labs>nav>ul {
+            padding-left: 0;
+            list-style: none;
+            overflow: hidden;
+            margin: 0;
+        }
+
+        ul .header-labs .page-menu-labs>nav>ul {
+            padding-left: 40px;
+        }
+
+        .header-labs .page-menu-labs>nav>ul>li {
+            float: left;
+            padding: 0 15px;
+            /* first link of the menu */
+        }
+
+        @media (max-width: 992px) {
+            .header-labs .page-menu-labs>nav>ul>li {
+                padding: 0 12px;
+            }
+        }
+
+        .header-labs .page-menu-labs>nav>ul>li>ul {
+            display: none;
+        }
+
+        .header-labs .page-menu-labs>nav>ul>li a {
+            color: #242424;
+        }
+
+        .header-labs .page-menu-labs>nav>ul>li.selected {
+            font-weight: bold;
+        }
+
+        .header-labs .page-menu-labs>nav>ul>li.selected a {
+            color: #242424;
+        }
+
+        .header-labs .page-menu-labs>nav>ul>li:first-child {
+            display: none;
+        }
+
+        @media (max-width: 992px) {
+            .header-labs .page-menu-labs {
+                display: none;
+            }
+
+            .header-labs .page-menu-labs.active {
+                display: block;
+            }
+        }
+    </style>
+    <style>
+        .breadcrumbs-wrapper {
+            background-color: #fff;
+            position: relative;
+            z-index: 2;
+        }
+
+        .breadcrumbs-container {
+            max-width: 85.71428571rem;
+            width: 100%;
+            margin: 0 auto;
+            padding: 0;
+            background-color: transparent;
+            box-sizing: border-box;
+            padding-top: 0.75rem;
+            padding-bottom: 0.75rem;
+            font-size: 12px;
+        }
+
+        @media (max-width: 768px) {
+            .breadcrumbs-container {
+                padding-left: 1rem;
+                padding-right: 1rem;
+            }
+        }
+
+        .breadcrumbs-row {
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .header-breadcrumbs {
+            flex: 1 1 0%;
+            margin-right: 2rem;
+        }
+
+        @media (max-width: 768px) {
+            .header-breadcrumbs>a::before {
+                content: "\000AB \0000a0";
+            }
+
+            .header-breadcrumbs>a:not(:last-of-type) {
+                display: none;
+            }
+        }
+
+        @media (min-width: 769px) {
+            .header-breadcrumbs>a::after {
+                content: "\0000a0 \000BB";
+                color: #242424;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header-breadcrumbs>.active {
+                display: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header class="header-labs">
+        <div class="header-labs-container">
+            <div class="header-labs-row">
+                <div class="header-labs-logo">
+                    <a href="https://www.loc.gov" class="header-labs-logo-loc"><img
+                            src="./img/logo-loc-alt.svg" alt="Library of Congress"></a>
+                    <a href="/labs" class="header-labs-logo-labs"><img
+                            src="./img/logo-labs.svg" alt="Labs"></a>
+                </div>
+                <div class="header-labs-menu">
+                    <button class="header-menu-button" id="header-menu-button"
+                        aria-controls="header-menu-container"
+                        aria-expanded="false"><span>open nav </span><i
+                            class="icon icon-bars"></i></button>
+
+                    <div class="articles-menu-labs page-menu-labs">
+                        <nav aria-label="Menu">
+                            <ul>
+                                <li class="selected">
+                                    <a href="https://www.loc.gov/labs/">Welcome to LC
+                                        Labs!</a>
+                                </li>
+
+
+                                <li class="">
+                                    <a href="https://www.loc.gov/labs/about/">About</a>
+                                </li>
+
+
+                                <li class="">
+                                    <a href="https://www.loc.gov/labs/work/">Work</a>
+                                </li>
+
+
+                                <li class="">
+                                    <a href="https://www.loc.gov/labs/events/">Events</a>
+                                </li>
+
+
+                                <li>
+                                    <a href="https://data.labs.loc.gov/">Data for
+                                        Exploration</a>
+                                </li>
+
+
+                                <li class="selected"><a
+                                        href="https://www.loc.gov/labs/work/experiments/machine-learning/">AI
+                                        at
+                                        LC</a></li>
+
+
+                            </ul>
+                        </nav>
+                    </div>
+
+                    <div class="page-menu-labs-clone" aria-labelledby="header-menu-button"
+                        id="header-menu-container" aria-hidden="true" style="">
+                        <nav aria-label="Menu">
+                            <ul>
+
+
+                                <li class="selected">
+                                    <a href="https://www.loc.gov/labs/">Welcome to LC
+                                        Labs!</a>
+                                </li>
+
+
+                                <li class="">
+                                    <a href="https://www.loc.gov/labs/about/">About</a>
+                                </li>
+
+
+                                <li class="">
+                                    <a href="https://www.loc.gov/labs/work/">Work</a>
+                                </li>
+
+
+                                <li class="">
+                                    <a href="https://www.loc.gov/labs/events/">Events</a>
+                                </li>
+
+
+                                <li>
+                                    <a href="https://data.labs.loc.gov/">Data for
+                                        Exploration</a>
+                                </li>
+
+
+                                <li class="selected"><a
+                                        href="https://www.loc.gov/labs/work/experiments/machine-learning/">AI
+                                        at
+                                        LC</a></li>
+
+
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <div class="managed-content-container">
+        <div class="breadcrumbs-wrapper">
+            <div class="breadcrumbs-container">
+                <div class="breadcrumbs-row">
+                    <nav id="header-breadcrumbs" class="header-breadcrumbs">
+                        <a href="https://labs.loc.gov">Labs</a>
+                        <a href="https://labs.loc.gov/work/experiments/machine-learning/">AI
+                            at LC</a>
+                        <a href="index.html">AI Planning Framework</a>
+                        <span class="active">Implement</span>
+                    </nav>
+                </div>
+            </div>
+        </div>
+        <div class="managed-content-row">
+            <div class="managed-content-content">
+                <main class="main-content">
+                    <h1 id="implement">Implement</h1>
+                    <p>AI or ML services are operational and supported by strategy,
+                        policies, integrations, shared quality standards
+                        and a skilled workforce.</p>
+
+                    <p>This phase will include tools to assist with:</p>
+                    <ul>
+                        <li>Strategy and Roadmap</li>
+                        <li>Skills and Capacities</li>
+                        <li>Monitoring and Measuring</li>
+                        <li>Shared Quality Standards</li>
+                    </ul>
+
+                    <table>
+                        <tbody>
+                            <tr>
+                                <th colspan="3">Framework Activities</th>
+                            </tr>
+                            <tr>
+                                <td valign="top" style="width: 33.333%">
+                                    <h3>Understand</h3>
+                                    <p><img src="img/phases-understand-icon.png"
+                                            alt="An icon comprised of a lightbulb containing a network of people, institutions, and technology">
+                                    </p>
+                                    <p>Use tools to collaborate and assess:</p>
+                                    <ul>
+                                        <li>Risks and benefits</li>
+                                        <li>Principles and values</li>
+                                        <li>Data readiness</li>
+                                        <li>Local and domain expertise</li>
+                                    </ul>
+                                </td>
+                                <td valign="top" style="width: 33.333%">
+                                    <h3>Experiment</h3>
+                                    <p><img src="img/phases-experiment-icon.png"
+                                            alt="An icon comprised of three arrows and three dots organized in a circle, representing a cycle">
+                                    </p>
+                                    <p>Create practices and documentation to:</p>
+                                    <ul>
+                                        <li>Test data and models with use case</li>
+                                        <li>Review output with staff and users</li>
+                                        <li>Build baselines</li>
+                                    </ul>
+                                </td>
+                                <td valign="top" style="width: 33.333%">
+                                    <h3>Implement</h3>
+                                    <p><img src="img/phases-implement-icon.png"
+                                            alt="An icon comprised of a pyramid above an institution, a magnifying glass above a graph, people, and a certificate">
+                                    </p>
+                                    <p>Create policies and standards, including:</p>
+                                    <ul>
+                                        <li>Strategy and roadmap</li>
+                                        <li>Skills and capacities</li>
+                                        <li>Monitoring and measuring</li>
+                                        <li>Shared quality standards</li>
+                                    </ul>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <p><em><a href="img/AIframework-3.jpg">Download this table as an
+                                image</a></em></p>
+                </main>
+            </div>
+            <div class="managed-content-navigation"></div>
+            <script src="left_bar.js"></script>
+        </div>
+    </div>
+</body>
+
+</html>

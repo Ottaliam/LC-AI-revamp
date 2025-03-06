@@ -1,0 +1,588 @@
+<!doctype html>
+<html lang="en-us">
+
+<head>
+    <meta charset="utf-8">
+    <title>LC Labs AI Planning Framework</title>
+    <meta name="description"
+        content="LC Labs has been developing a planning framework to support the responsible exploration and potential adoption of AI at the Library of Congress.">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/base.css">
+    <style>
+        .header-labs {
+            border-top: 4px solid #F05129;
+            background-color: transparent;
+            background-color: #fff;
+        }
+
+        .header-labs .header-labs-container {
+            max-width: 85.71428571rem;
+            width: 100%;
+            margin: 0 auto;
+            padding: 0 2rem;
+            background-color: #fff;
+            box-sizing: border-box;
+        }
+
+        @media (max-width: 768px) {
+            .header-labs .header-labs-container {
+                padding-left: 1rem;
+                padding-right: 1rem;
+            }
+        }
+
+        .header-labs .header-labs-row {
+            display: -webkit-box;
+            /* OLD - iOS 6-, Safari 3.1-6, BB7 */
+            display: -ms-flexbox;
+            /* TWEENER - IE 10 */
+            display: -webkit-flex;
+            /* NEW - Safari 6.1+. iOS 7.1+, BB10 */
+            display: -moz-box;
+            display: flex;
+            /* NEW, Spec - Firefox, Chrome, Opera */
+            -webkit-flex-flow: row wrap;
+            flex-flow: row wrap;
+            -webkit-flex-align: flex-start;
+            -webkit-align-items: flex-start;
+            -ms-flex-align: flex-start;
+            align-items: flex-start;
+            margin: 0 -1rem;
+            align-items: center;
+        }
+
+        .header-labs .header-labs-logo {
+            -webkit-box-flex: 1;
+            /* OLD - iOS 6-, Safari 3.1-6 */
+            -webkit-flex: 1;
+            /* Safari 6.1+. iOS 7.1+, BB10 */
+            -ms-flex: 1;
+            /* IE 10 */
+            -moz-box-flex: 1;
+            flex: 1;
+            /* NEW, Spec - Firefox, Chrome, Opera */
+            min-width: 0;
+            /* firefox fix */
+            margin: 0 1rem;
+            box-sizing: border-box;
+            padding-top: 15px;
+            padding-bottom: 15px;
+            white-space: nowrap;
+            display: flex;
+            align-items: center;
+        }
+
+        .header-labs .header-labs-logo>.header-labs-logo-loc>img,
+        .header-labs .header-labs-logo>.header-labs-logo-labs>img {
+            height: 100%;
+            margin: 0;
+            display: block;
+        }
+
+        .header-labs .header-labs-logo>.header-labs-logo-loc {
+            display: inline-block;
+            vertical-align: top;
+            border-right: 1px solid #808080;
+            padding-right: 10px;
+            margin-right: 10px;
+            height: 50px;
+        }
+
+        @media (min-width: 481px) {
+            .header-labs .header-labs-logo>.header-labs-logo-loc {
+                padding-right: 18px;
+                margin-right: 18px;
+                height: 80px;
+            }
+        }
+
+        @media (min-width: 993px) {
+            .header-labs .header-labs-logo>.header-labs-logo-loc {
+                height: 97px;
+            }
+        }
+
+        .header-labs .header-labs-logo>.header-labs-logo-loc>span {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            margin: -1px;
+            padding: 0;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            border: 0;
+        }
+
+        .header-labs .header-labs-logo>.header-labs-logo-labs {
+            display: inline-block;
+            height: 16px;
+        }
+
+        @media (min-width: 481px) {
+            .header-labs .header-labs-logo>.header-labs-logo-labs {
+                height: 20px;
+            }
+        }
+
+        @media (min-width: 993px) {
+            .header-labs .header-labs-logo>.header-labs-logo-labs {
+                height: 25px;
+            }
+        }
+
+        .header-labs .header-labs-menu .header-menu-button {
+            display: none;
+            color: #000;
+            padding: 0 1rem;
+            border: 0;
+            background: none;
+            font-size: 2rem;
+            height: 50px;
+            line-height: 50px;
+        }
+
+        .header-labs .header-labs-menu .header-menu-button:focus {
+            outline: 1px dotted #BFBFBF;
+        }
+
+        .header-labs .header-labs-menu .header-menu-button>span {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            margin: -1px;
+            padding: 0;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            border: 0;
+        }
+
+        @media (max-width: 992px) {
+            .header-labs .header-labs-menu .header-menu-button {
+                display: inline-block;
+            }
+        }
+
+        .header-labs .header-labs-menu .header-menu-button[aria-expanded="true"] {
+            background-color: #F6F6F6;
+            color: #F05129;
+        }
+
+        .header-labs .header-labs-menu .header-menu-button[aria-expanded="true"] i:before {
+            content: "\f00d";
+        }
+
+        .header-labs .page-menu-labs-clone {
+            display: none;
+            position: absolute;
+            z-index: 1;
+            background-color: #F6F6F6;
+            padding: 1rem 3rem 1rem 1rem;
+            right: 0;
+        }
+
+        .header-labs .page-menu-labs-clone>nav>h2 {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            margin: -1px;
+            padding: 0;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            border: 0;
+        }
+
+        .header-labs .page-menu-labs-clone>nav>ul {
+            padding-left: 0;
+            list-style: none;
+            margin-bottom: 0;
+        }
+
+        ul .header-labs .page-menu-labs-clone>nav>ul {
+            padding-left: 40px;
+        }
+
+        .header-labs .page-menu-labs-clone>nav>ul>li>a {
+            padding: 5px 0;
+            display: block;
+        }
+
+        .header-labs .page-menu-labs-clone>nav>ul>li>ul {
+            display: none;
+        }
+
+        .header-labs .page-menu-labs>nav>h2 {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            margin: -1px;
+            padding: 0;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            border: 0;
+        }
+
+        .header-labs .page-menu-labs>nav>ul {
+            padding-left: 0;
+            list-style: none;
+            overflow: hidden;
+            margin: 0;
+        }
+
+        ul .header-labs .page-menu-labs>nav>ul {
+            padding-left: 40px;
+        }
+
+        .header-labs .page-menu-labs>nav>ul>li {
+            float: left;
+            padding: 0 15px;
+            /* first link of the menu */
+        }
+
+        @media (max-width: 992px) {
+            .header-labs .page-menu-labs>nav>ul>li {
+                padding: 0 12px;
+            }
+        }
+
+        .header-labs .page-menu-labs>nav>ul>li>ul {
+            display: none;
+        }
+
+        .header-labs .page-menu-labs>nav>ul>li a {
+            color: #242424;
+        }
+
+        .header-labs .page-menu-labs>nav>ul>li.selected {
+            font-weight: bold;
+        }
+
+        .header-labs .page-menu-labs>nav>ul>li.selected a {
+            color: #242424;
+        }
+
+        .header-labs .page-menu-labs>nav>ul>li:first-child {
+            display: none;
+        }
+
+        @media (max-width: 992px) {
+            .header-labs .page-menu-labs {
+                display: none;
+            }
+
+            .header-labs .page-menu-labs.active {
+                display: block;
+            }
+        }
+    </style>
+    <style>
+        .breadcrumbs-wrapper {
+            background-color: #fff;
+            position: relative;
+            z-index: 2;
+        }
+
+        .breadcrumbs-container {
+            max-width: 85.71428571rem;
+            width: 100%;
+            margin: 0 auto;
+            padding: 0;
+            background-color: transparent;
+            box-sizing: border-box;
+            padding-top: 0.75rem;
+            padding-bottom: 0.75rem;
+            font-size: 12px;
+        }
+
+        @media (max-width: 768px) {
+            .breadcrumbs-container {
+                padding-left: 1rem;
+                padding-right: 1rem;
+            }
+        }
+
+        .breadcrumbs-row {
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .header-breadcrumbs {
+            flex: 1 1 0%;
+            margin-right: 2rem;
+        }
+
+        @media (max-width: 768px) {
+            .header-breadcrumbs>a::before {
+                content: "\000AB \0000a0";
+            }
+
+            .header-breadcrumbs>a:not(:last-of-type) {
+                display: none;
+            }
+        }
+
+        @media (min-width: 769px) {
+            .header-breadcrumbs>a::after {
+                content: "\0000a0 \000BB";
+                color: #242424;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header-breadcrumbs>.active {
+                display: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header class="header-labs">
+        <div class="header-labs-container">
+            <div class="header-labs-row">
+                <div class="header-labs-logo">
+                    <a href="https://www.loc.gov" class="header-labs-logo-loc"><img
+                            src="./img/logo-loc-alt.svg" alt="Library of Congress"></a>
+                    <a href="/labs" class="header-labs-logo-labs"><img
+                            src="./img/logo-labs.svg" alt="Labs"></a>
+                </div>
+                <div class="header-labs-menu">
+                    <button class="header-menu-button" id="header-menu-button"
+                        aria-controls="header-menu-container"
+                        aria-expanded="false"><span>open nav </span><i
+                            class="icon icon-bars"></i></button>
+
+                    <div class="articles-menu-labs page-menu-labs">
+                        <nav aria-label="Menu">
+                            <ul>
+                                <li class="selected">
+                                    <a href="https://www.loc.gov/labs/">Welcome to LC
+                                        Labs!</a>
+                                </li>
+
+
+                                <li class="">
+                                    <a href="https://www.loc.gov/labs/about/">About</a>
+                                </li>
+
+
+                                <li class="">
+                                    <a href="https://www.loc.gov/labs/work/">Work</a>
+                                </li>
+
+
+                                <li class="">
+                                    <a href="https://www.loc.gov/labs/events/">Events</a>
+                                </li>
+
+
+                                <li>
+                                    <a href="https://data.labs.loc.gov/">Data for
+                                        Exploration</a>
+                                </li>
+
+
+                                <li class="selected"><a
+                                        href="https://www.loc.gov/labs/work/experiments/machine-learning/">AI
+                                        at
+                                        LC</a></li>
+
+
+                            </ul>
+                        </nav>
+                    </div>
+
+                    <div class="page-menu-labs-clone" aria-labelledby="header-menu-button"
+                        id="header-menu-container" aria-hidden="true" style="">
+                        <nav aria-label="Menu">
+                            <ul>
+
+
+                                <li class="selected">
+                                    <a href="https://www.loc.gov/labs/">Welcome to LC
+                                        Labs!</a>
+                                </li>
+
+
+                                <li class="">
+                                    <a href="https://www.loc.gov/labs/about/">About</a>
+                                </li>
+
+
+                                <li class="">
+                                    <a href="https://www.loc.gov/labs/work/">Work</a>
+                                </li>
+
+
+                                <li class="">
+                                    <a href="https://www.loc.gov/labs/events/">Events</a>
+                                </li>
+
+
+                                <li>
+                                    <a href="https://data.labs.loc.gov/">Data for
+                                        Exploration</a>
+                                </li>
+
+
+                                <li class="selected"><a
+                                        href="https://www.loc.gov/labs/work/experiments/machine-learning/">AI
+                                        at
+                                        LC</a></li>
+
+
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <div class="managed-content-container">
+        <div class="breadcrumbs-wrapper">
+            <div class="breadcrumbs-container">
+                <div class="breadcrumbs-row">
+                    <nav id="header-breadcrumbs" class="header-breadcrumbs">
+                        <a href="https://labs.loc.gov">Labs</a>
+                        <a href="https://labs.loc.gov/work/experiments/machine-learning/">AI
+                            at LC</a>
+                        <a href="index.html">AI Planning Framework</a>
+                        <span class="active">Experiment</span>
+                    </nav>
+                </div>
+            </div>
+        </div>
+        <div class="managed-content-row">
+            <div class="managed-content-content">
+                <main class="main-content">
+                    <h1 id="experiment">Experiment</h1>
+                    <p style="display: inline-block">We use the following tools and
+                        mechanisms for experiments: The
+                        <span class="tooltip">Digital Innovation Indefinite Delivery
+                            Indefinite Quantity (IDIQ)
+                            <span class="tooltiptext">IDIQ is a type of contract that
+                                provides for an indefinite quantity of supplies or
+                                services during a fixed period of time.</span>
+                            <i class="info-icon">ℹ️</i>
+                        </span> contract. The Data Processing Plan documents data
+                        transformations and the predicted and actual AI model performance
+                        for specific tasks. It combines elements from a model card, data
+                        cover sheet and documents curatorial provenance. Vendors are
+                        required to fill it out as part of the Digital Innovation IDIQ. In
+                        Development: NLP vendor evaluation guide and quality review
+                        recommendations. Under Recommendation: Balanced datasets for
+                        benchmarking newly available AI models and tools. Test specific
+                        use cases, models and data with staff and users to document
+                        performance and build quality baselines and benchmarks.
+                    </p>
+
+                    <style>
+                        .tooltip {
+                            position: relative;
+                            display: inline;
+                            cursor: default;
+                        }
+
+                        .tooltip .tooltiptext {
+                            visibility: hidden;
+                            width: 220px;
+                            background-color: #555;
+                            color: #fff;
+                            text-align: center;
+                            border-radius: 6px;
+                            padding: 5px;
+                            position: absolute;
+                            z-index: 30;
+                            bottom: 125%;
+                            left: 50%;
+                            margin-left: -110px;
+                            opacity: 0;
+                            transition: opacity 0.3s;
+                            font-size: 14px;
+                        }
+
+                        .tooltip .tooltiptext::after {
+                            content: "";
+                            position: absolute;
+                            top: 100%;
+                            /* Arrow at the bottom */
+                            left: 50%;
+                            margin-left: -5px;
+                            border-width: 5px;
+                            border-style: solid;
+                            border-color: #555 transparent transparent transparent;
+                        }
+
+                        .tooltip:hover .tooltiptext {
+                            visibility: visible;
+                            opacity: 1;
+                        }
+
+                        .tooltip {
+                            color: blue;
+                            display: inline-flex;
+                            align-items: center;
+                        }
+
+                        .tooltip .info-icon {
+                            font-size: 0.75rem;
+                            vertical-align: super;
+                            padding: -1px;
+                        }
+                    </style>
+
+                    <p>Tools for use in this phase:</p>
+
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Title</th>
+                                <th>Description</th>
+                                <th>Last Revised</th>
+                                <th>Download</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Data Processing Plan</td>
+                                <td>This template documents data transformations and the
+                                    predicted and actual AI model performance for
+                                    specific tasks. It combines elements from a model
+                                    card, data cover sheet and documents curatorial
+                                    provenance. Vendors are required to fill it out as
+                                    part of the Digital Innovation IDIQ.
+                                </td>
+                                <td>2021-12-01</td>
+                                <td>Attachment J2 on the Library of Congress <a
+                                        href="https://github.com/LibraryOfCongress/labs-ai-framework/raw/main/Experiment/Data-Processing-Plan-template-2021-12-01-draft.docx">Digital
+                                        Innovation IDIQ solicitation</a></td>
+                            </tr>
+                            <tr>
+                                <td>Digital Innovation Indefinite Delivery Indefinite
+                                    Quantity (IDIQ)</td>
+                                <td>The Library of Congress <a
+                                        href="https://sam.gov/opp/1e6e3f521dd443809e6d0107b5101580/view#general">Digital
+                                        Innovation IDIQ</a> contract is a multi-year
+                                    contracting mechanism that we can use to fulfill
+                                    individual AI experiment at the Library of Congress,
+                                    and includes requirements that may be valuable
+                                    to the broader community.
+                                </td>
+                                <td>2022-07-28</td>
+                                <td>Library of Congress <a
+                                        href="https://sam.gov/opp/1e6e3f521dd443809e6d0107b5101580/view#general">Digital
+                                        Innovation IDIQ solicitation</a></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </main>
+            </div>
+            <div class="managed-content-navigation"></div>
+            <script src="left_bar.js"></script>
+        </div>
+    </div>
+</body>
+
+</html>
