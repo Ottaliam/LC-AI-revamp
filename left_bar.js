@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", function() {
                                 <li class="nav-item" data-page="understand.html"><a href="understand.html">Understand</a></li>
                                 <li class="nav-item" data-page="experiment.html"><a href="experiment.html">Experiment</a></li>
                                 <li class="nav-item" data-page="implement.html"><a href="implement.html">Implement</a></li>
-                                <li class="nav-item" data-page="form.html"><a href="form.html">Worksheets</a></li>
+<!--                                <li class="nav-item" data-page="form.html"><a href="form.html">Worksheets</a></li>-->
                                 <li class="nav-item" data-page="glossary.html"><a href="glossary.html">Glossary</a></li>
                                 <li class="nav-item" data-page="further_accessment.html"><a href="further_accessment.html">Further Risk Accessment</a></li>
                             </ul>
@@ -23,7 +23,7 @@ document.addEventListener("DOMContentLoaded", function() {
                         <li class="nav-item" data-page="404.html"><a href="404.html">Experiments to Date</a></li>
                         <li class="nav-item" data-page="404.html"><a href="404.html">Reports and Presentations</a></li>
                         <li class="nav-item" data-page="404.html"><a href="404.html">Artificial Intelligence Governance</a></li>
-                        <li class="nav-item" data-page="phase_two_risk_accessment.html"><a href="phase_two_risk_accessment.html">Further Risk Assessment</a></li>
+<!--                        <li class="nav-item" data-page="phase_two_risk_accessment.html"><a href="phase_two_risk_accessment.html">Further Risk Assessment</a></li>-->
                     </ul>
                 </nav>
             </div>
