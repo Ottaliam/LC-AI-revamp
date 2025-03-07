@@ -3,12 +3,12 @@ Library of Congress LC Labs AI Planning Framework Prototype built by University 
 
 ## Key Featured Changes
 - Side Navigation
-    - Separates content clearly so user sees only what’s relevant
-- Clearified Terminology 
+    - Separates content clearly so user can navigate to relevant information
+- Clarified Terminology 
     - **Tooltips** on the page with definition and explanation
     - A **Glossary** page with definitions of terms
 - Interaction Form for specific worksheet
-    - Introduces the idea that users can tally their answers to assess their answers more quickly
+    - Introduces the idea that users can receive an automatic risk assessment without data collection
 
 ## File Structure
 
